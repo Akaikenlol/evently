@@ -17,6 +17,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { eventFormSchema } from "@/lib/validator";
 import { eventDefaultValues } from "@/constants";
+import DropDown from "./DropDown";
+import { Textarea } from "@/components/ui/textarea";
 
 type EventFormProps = {
 	userId: string;
@@ -66,10 +68,9 @@ const EventForm = ({ userId, type }: EventFormProps) => {
 						render={({ field }) => (
 							<FormItem className="w-full">
 								<FormControl>
-									<Input
-										placeholder="Event Title"
-										{...field}
-										className="input-field"
+									<DropDown
+										onChangeHandler={field.onChange}
+										value={field.value}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -77,7 +78,34 @@ const EventForm = ({ userId, type }: EventFormProps) => {
 						)}
 					/>
 				</div>
-
+				<div className="flex flex-col gap-5 md:flex-row">
+					<FormField
+						control={form.control}
+						name="description"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormControl className="h-72">
+									<Textarea
+										placeholder="Description"
+										{...field}
+										className="textarea rounded-2xl"
+									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="imageUrl"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormControl className="h-72"></FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
 				<Button type="submit">Submit</Button>
 			</form>
 		</Form>
