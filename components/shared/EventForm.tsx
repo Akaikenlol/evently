@@ -20,6 +20,7 @@ import { eventDefaultValues } from "@/constants";
 import DropDown from "./DropDown";
 import { Textarea } from "@/components/ui/textarea";
 import { FileUploader } from "./FileUploader";
+import Image from "next/image";
 
 // 2:16:21
 
@@ -110,6 +111,58 @@ const EventForm = ({ userId, type }: EventFormProps) => {
 										imageUrl={field.value}
 										setFiles={setFiles}
 									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+
+				<div className="flex flex-col gap-5 md:flex-row">
+					<FormField
+						control={form.control}
+						name="location"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormControl>
+									<div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2">
+										<Image
+											src={"/assets/icons/location-grey.svg"}
+											alt="location"
+											width={24}
+											height={24}
+										/>
+										<Input
+											placeholder="Event Location or Online"
+											{...field}
+											className="input-field"
+										/>
+									</div>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+				<div className="flex flex-col gap-5 md:flex-row">
+					<FormField
+						control={form.control}
+						name="startDateTime"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormControl>
+									<div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2">
+										<Image
+											src={"/assets/icons/calendar.svg"}
+											alt="calendar"
+											width={24}
+											height={24}
+											className="filter-grey"
+										/>
+										<p className="ml-3 whitespace-nowrap text-gray-600">
+											Start Date:
+										</p>
+									</div>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
