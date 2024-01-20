@@ -1,4 +1,5 @@
 import Collection from "@/components/shared/Collection";
+import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
 import { getAllEvents } from "@/lib/actions/event.actions";
 import Image from "next/image";
@@ -48,7 +49,8 @@ export default async function Home() {
 				</h2>
 
 				<div className="flex flex-col w-full gap-5 md:flex-row">
-					Search CategoryFilter
+					<Search />
+					CategoryFilter
 				</div>
 
 				<Collection
