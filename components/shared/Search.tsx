@@ -6,7 +6,11 @@ import { Input } from "../ui/input";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const Search = () => {
+const Search = ({
+	placeholder = "Search title...",
+}: {
+	placeholder?: string;
+}) => {
 	const [query, setQuery] = useState("");
 	const searchParams = useSearchParams();
 	const router = useRouter();
@@ -41,7 +45,7 @@ const Search = () => {
 			/>
 			<Input
 				type="text"
-				placeholder="Search"
+				placeholder={placeholder}
 				onChange={(e) => setQuery(e.target.value)}
 				className="p-regular-16 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus-visible:ring-0 focus:border-0 focus-visible:ring-offset-0"
 			/>
